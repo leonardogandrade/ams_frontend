@@ -1,0 +1,49 @@
+div#loginArea{
+    margin-top: 100px;
+}
+
+div#loginArea .login{
+    width: 100%;
+    max-width: 30%;
+    margin : 20px auto;
+    padding: 20px 30px 20px 30px;
+    border : 1px solid #dadada;
+    border-radius: 5px;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div#loginArea img{
+    width: 80px;
+}
+
+div#loginArea form header {
+    display: flex;
+    margin: auto 20px;
+    justify-content: space-between;
+    align-items: center;   
+    margin-bottom: 30px;
+}
+div#loginArea form footer {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+div#loginArea .login input{
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+div#loginArea .login button{
+    height: 50px;
+    background: #2C82C9;
+    color : #fafafa;
+    font-weight: bold;
+    font-size: 14px;
+}
