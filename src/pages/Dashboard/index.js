@@ -141,7 +141,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-            
+
             <Button style={{marginLeft : '90%'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                 <AccountCircle color="disabled" style={{ fontSize: 42}}/>
             </Button>

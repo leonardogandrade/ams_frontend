@@ -87,7 +87,7 @@ export default class Simulation extends Component{
                         name='parada'
                         type='submit'
                         onClick={this.handleClick}
-                    >Parada</button>
+                    >Inversor</button>
                      <button className='button2'
                         
                         value=''
