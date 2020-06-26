@@ -25,6 +25,7 @@ import { logout } from '../../services/auth';
 import { Link } from 'react-router-dom';
 //Charts
 import HomeIcon from '@material-ui/icons/Home';
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
@@ -34,7 +35,7 @@ import LineChart from '../../components/Charts/LineChart';
 import PieChart from '../../components/Charts/PieChart';
 //import BarChart from '../../components/Charts/BarChart';
 //import ComposedChart from '../../components/Charts/ComposedChart';
-
+import TableDetail from '../../components/TableDetail';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -189,6 +190,10 @@ export default function MiniDrawer() {
                 <ListItemIcon>{<HomeIcon />}</ListItemIcon>
                 <ListItemText primary='Home'/>
             </ListItem>
+            <ListItem button component={Link} to='/dashboard'>
+                <ListItemIcon>{<DriveEtaIcon />}</ListItemIcon>
+                <ListItemText primary='Mobile'/>
+            </ListItem>
 
             <ListItem button >
                 <ListItemIcon>{<MailIcon />}</ListItemIcon>
@@ -227,6 +232,7 @@ export default function MiniDrawer() {
             </div>
             <div className='lineReport2'>
               <PieChart/>
+              <TableDetail/>
             </div>
             {/* <div className='lineReport2'>
                 <ComposedChart/>

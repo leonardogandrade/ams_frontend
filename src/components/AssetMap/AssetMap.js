@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import amsApi from '../../services/amsApi';
 import './AssetMap.css'
 import io from 'socket.io-client';
@@ -80,67 +79,83 @@ export default class AssetMap extends Component {
 
   render() {
     return (
-      <Map  className="map" center={this.state.centerMap} zoom={this.state.zoom} maxZoom={this.state.maxZoom} minZoom={this.state.minZoom}>
+      <Map  className="map"  style={{height : '100%'}} center={this.state.centerMap} zoom={this.state.zoom} maxZoom={this.state.maxZoom} minZoom={this.state.minZoom}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.state.docs.map(asset=>{
-          if(asset.status === 'parada'){
+          if(asset.status === 'ok'){
             return (
               <Marker 
-              key={asset._id}
-              position={[asset.coord.lat,asset.coord.lon]}
-              icon={IconGreen}>
-                <Popup key={asset._id}>
-                  ID: {asset.mac} <br/>
+                key={asset._id}
+                position={[asset.coord.lat,asset.coord.lon]}
+                icon={IconGreen}>
+                <Popup>
+                ID: {asset.mac} <br/>
                   Localização: {asset.name} <br/>
                   Status: {asset.status} <br/>
                   Tipo: {asset.type} <br/>
+                  Última manutenção: {asset.lastRepair} <br/>
+                  Próxima manutenção: {asset.nextRepair} <br/>
+                  Temperatura: {asset.temp} <br/>
+                  Pressão: {asset.pression} <br/>
                 </Popup>
-            </Marker>
+              </Marker>
             )
-          } else if(asset.status === 'aquecimento'){
+          } else if(asset.status === 'error'){
             return(
               <Marker
-              key={asset._id}
-              position={[asset.coord.lat,asset.coord.lon]}
-              icon={IconRed}>
+                key={asset._id}
+                position={[asset.coord.lat,asset.coord.lon]}
+                icon={IconRed}>
                 <Popup>
                   ID: {asset.mac} <br/>
                   Localização: {asset.name} <br/>
                   Status: {asset.status} <br/>
                   Tipo: {asset.type} <br/>
+                  Última manutenção: {asset.lastRepair} <br/>
+                  Próxima manutenção: {asset.nextRepair} <br/>
+                  Temperatura: {asset.temp} <br/>
+                  Pressão: {asset.pression} <br/>
                 </Popup>
-            </Marker>
+              </Marker>
             )
-          } else if(asset.status === 'manutencao'){
+          } else if(asset.status === 'warning'){
             return(
               <Marker
-              key={asset._id}              
-              position={[asset.coord.lat,asset.coord.lon]}
-              icon={IconYellow}>
+                key={asset._id}              
+                position={[asset.coord.lat,asset.coord.lon]}
+                icon={IconYellow}>
                 <Popup>
-                  ID: {asset.mac} <br/>
+                ID: {asset.mac} <br/>
                   Localização: {asset.name} <br/>
                   Status: {asset.status} <br/>
                   Tipo: {asset.type} <br/>
+                  Última manutenção: {asset.lastRepair} <br/>
+                  Próxima manutenção: {asset.nextRepair} <br/>
+                  Temperatura: {asset.temp} <br/>
+                  Pressão: {asset.pression} <br/>
                 </Popup>
-            </Marker>
+              </Marker>
             )
-          } else if(asset.status === 'desligamento'){
+          } else if(asset.status === 'inactive'){
             return(
               <Marker 
-              key={asset._id}
-              position={[asset.coord.lat,asset.coord.lon]}
-              icon={IconGrey}>
+                key={asset._id}
+                position={[asset.coord.lat,asset.coord.lon]}
+                icon={IconGrey}>
                 <Popup>
-                  ID: {asset.mac} <br/>
+                ID: {asset.mac} <br/>
                   Localização: {asset.name} <br/>
                   Status: {asset.status} <br/>
                   Tipo: {asset.type} <br/>
+                  Última manutenção: {asset.lastRepair} <br/>
+                  Próxima manutenção: {asset.nextRepair} <br/>
+                  Temperatura: {asset.temp} <br/>
+                  Pressão: {asset.pression} <br/>
                 </Popup>
-            </Marker>
+              </Marker>
             )
           }
           return 0;

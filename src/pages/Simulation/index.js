@@ -15,14 +15,23 @@ export default class Simulation extends Component{
     handleClick = async event =>{
         //event.preventDefault();
         switch(event.target.name){
+            case 'delete' : 
+                await amsApi.delete('/login/delete');
+            break;
+
             case 'aquecimento' : 
                 await amsApi.post('/login/asset',{
                     "mac" : "aaa1177",
                     "name" : "Bahia",
                     "type" : "compressor",
                     "value" : this.randomNumber(),
-                    "status" : "aquecimento",
+                    "status" : "error",
                     "active" : 1,
+                    "lastRepair" : "12/04/2018",
+                    "nextRepair" : "26/09/2019",
+                    "hourmeter" : 920,
+                    "pression" : this.randomNumber() + 100,
+                    "temp" : this.randomNumber() + 50,
                     "coord" : 
                         {
                             "lat" : "-15.017914",
@@ -31,13 +40,18 @@ export default class Simulation extends Component{
                 })
             break;
 
-            case 'parada' : await amsApi.post('/login/asset',{
+            case 'inversor' : await amsApi.post('/login/asset',{
                 "mac" : "aaa1166",
                 "name" : "Cuiabá",
                 "type" : "compressor",
                 "value" : this.randomNumber(),
-                "status" : "parada",
+                "status" : "ok",
                 "active" : 1,
+                "lastRepair" : "12/04/2018",
+                "nextRepair" : "26/09/2019",
+                "hourmeter" : 920,
+                "pression" : this.randomNumber() + 100,
+                "temp" : this.randomNumber() + 50,
                 "coord" : 
                     {
                         "lat" : "-15.526302",
@@ -51,8 +65,13 @@ export default class Simulation extends Component{
                 "name" : "Sao Paulo",
                 "type" : "compressor",
                 "value" : this.randomNumber(),
-                "status" : "desligamento",
+                "status" : "inactive",
                 "active" : 1,
+                "lastRepair" : "12/04/2018",
+                "nextRepair" : "26/09/2019",
+                "hourmeter" : 920,
+                "pression" : this.randomNumber() + 100,
+                "temp" : this.randomNumber() + 50,
                 "coord" : 
                     {
                         "lat" : "-22.843709",
@@ -66,8 +85,13 @@ export default class Simulation extends Component{
                 "name" : "Vitoria",
                 "type" : "compressor",
                 "value" : this.randomNumber(),
-                "status" : "manutencao",
+                "status" : "warning",
                 "active" : 0,
+                "lastRepair" : "12/04/2018",
+                "nextRepair" : "26/09/2019",
+                "hourmeter" : 920,
+                "pression" : this.randomNumber() + 100,
+                "temp" : this.randomNumber() + 50,
                 "coord" : 
                     {
                         "lat" : "-20.301755",
@@ -84,7 +108,7 @@ export default class Simulation extends Component{
                 <div className='line'>
                     <button className='button1'
                         value=''
-                        name='parada'
+                        name='inversor'
                         type='submit'
                         onClick={this.handleClick}
                     >Inversor</button>
@@ -113,6 +137,13 @@ export default class Simulation extends Component{
                         type='submit'
                         onClick={this.handleClick}
                     >Aquecimento</button>
+                    <button className='button5'
+                        
+                        value=''
+                        name='delete'
+                        type='submit'
+                        onClick={this.handleClick}
+                    ></button>
                 </div>
             </div>
         )
